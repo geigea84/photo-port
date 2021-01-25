@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-//20.1.3 contains: import * as serviceWorker from './serviceWorker';, but that line is not present here
+//20.1.3 contains: import * as serviceWorker from './serviceWorker';, but that line is not present here, preemptively adding it
+//import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
