@@ -13,6 +13,10 @@ import ContactForm from './components/Contact';
 import './App.css';
 
 function App() {
+
+    //20.4.6
+    const [contactSelected, setContactSelected] = useState(false);
+
     //20.3.4
     const [categories] = useState([
         {
@@ -38,16 +42,25 @@ function App() {
 
     return (
         <div>
+            {/* 20.4.6 passing in to Nav component to use as props */}
             <Nav
                 categories={categories}
                 setCurrentCategory={setCurrentCategory}
                 currentCategory={currentCategory}
+                contactSelected={contactSelected}
+                setContactSelected={setContactSelected}
             ></Nav>
             <main>
                 <div>
-                    <ContactForm></ContactForm>
-                    <Gallery currentCategory={currentCategory}></Gallery>
-                    <About></About>
+                    {/* 20.4.6 */}
+                    {!contactSelected ? (
+                        <>
+                            <Gallery currentCategory={currentCategory}></Gallery>
+                            <About></About>
+                        </>
+                    ) : (
+                            <ContactForm></ContactForm>
+                        )}
                 </div>
             </main>
         </div>
