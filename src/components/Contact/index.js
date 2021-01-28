@@ -42,7 +42,7 @@ function ContactForm() {
     //20.4.6 added conditionally rendered error message
     return (
         <section>
-            <h1>Contact me</h1>
+            <h1 data-testid="h1tag">Contact me</h1>
             <form id="contact-form" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
