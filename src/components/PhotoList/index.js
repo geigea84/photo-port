@@ -1,8 +1,13 @@
 //20.3.5
 import React, { useState } from 'react';
-//import Modal from '../Modal';
+//20.5.3
+import Modal from '../Modal';
 
 const PhotoList = ({ category }) => {
+
+    //20.5.4
+    const [currentPhoto, setCurrentPhoto] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [photos] = useState([
         {
@@ -104,14 +109,23 @@ const PhotoList = ({ category }) => {
 
     const currentPhotos = photos.filter((photo) => photo.category === category);
 
+    //20.5.3
+    const toggleModal = (image, i) => {
+        //20.5.4
+        setCurrentPhoto({...image, index: i});
+        setIsModalOpen(true);
+    }
+
     return (
         <div>
+            {isModalOpen && <Modal currentPhoto={currentPhoto} />}
             <div className="flex-row">
                 {currentPhotos.map((image, i) => (
                     <img
                         src={require(`../../assets/small/${category}/${i}.jpg`).default}
                         alt={image.name}
                         className="img-thumbnail mx-1"
+                        onClick={() => toggleModal(image, i)}
                         key={image.name}
                     />
                 ))}
